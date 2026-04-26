@@ -1,45 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>My Editor - Pre Register</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Test API</title>
 </head>
-
 <body>
 
-  <div class="hero">
-    <h1>My Editor</h1>
-    <p>Edit Everything. Limit Nothing.</p>
+<h1>Frontend Connected</h1>
+<button onclick="getData()">Test API</button>
 
-    <div class="countdown">
-      <h2>Launching In</h2>
-      <div id="countdown">Loading...</div>
-    </div>
+<p id="output"></p>
 
-    <input id="email" placeholder="Enter email">
-    <button onclick="join()">Join Waitlist</button>
+<script>
+async function getData() {
+  try {
+    const res = await fetch("http://localhost:3000/api/test");
+    const data = await res.json();
+    document.getElementById("output").innerText = data.message;
+  } catch (err) {
+    console.error(err);
+  }
+}
+</script>
 
-    <p id="status"></p>
-  </div>
-
-  <!-- ADS (MONETIZATION READY) -->
-  <div class="ad-box">
-    Advertisement Space
-  </div>
-
-  <!-- LEADERBOARD -->
-  <div class="board">
-    <h3>Top Referrals</h3>
-    <div id="leaderboard"></div>
-  </div>
-
-  <!-- COOKIE BANNER -->
-  <div id="cookie">
-    We use cookies for analytics.
-    <button onclick="acceptCookies()">Accept</button>
-  </div>
-
-  <script src="app.js"></script>
 </body>
 </html>
